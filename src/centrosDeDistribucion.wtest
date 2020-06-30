@@ -1,0 +1,23 @@
+import vendedores.*
+import centrosDeDistribucion.*
+import clientes.*
+
+
+test "Agregar Vendedor y vendedor Estrella" {
+	
+	const cert1 = new Certificacion(esSobreProductos = true, puntos = 5)
+	const cert2 = new Certificacion(esSobreProductos = false, puntos = 10)
+	const cert3 = new Certificacion(esSobreProductos = true, puntos = 15)	
+	
+	const bsas = new Provincia(poblacion = 13)	
+	const moron = new Ciudad(provincia = bsas)	
+	const pampa = new Provincia(poblacion = 7)	
+	const rosa = new Ciudad(provincia = pampa)
+	
+	const vendedor2 = new Viajante(provinciaHabilitadas = [moron,pampa] certificaciones =[cert1,cert2,cert3] )
+	const vendedor1 = new Fijo(ciudadVive = moron, certificaciones =[cert1,cert2] )
+	
+	const munro = new CentroDeDistribucion(ciudad=moron, vendedores=[vendedor1])
+	munro.agregarVendedor(vendedor2)
+	munro.vendedorEstrella()
+}
